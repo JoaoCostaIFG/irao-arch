@@ -24,7 +24,7 @@ jobs:
           docker run --network host \
             -v "$GITHUB_WORKSPACE:$GITHUB_WORKSPACE" \
             -w "$GITHUB_WORKSPACE" \
-            -e S3_ENDPOINT -e BUCKET_NAME -e ACCESS_KEY_ID -e ACCESS_KEY_SECRET \
+            -e GITHUB_WORKSPACE -e S3_ENDPOINT -e BUCKET_NAME -e ACCESS_KEY_ID -e ACCESS_KEY_SECRET \
             archlinux:latest bash -c '
               set -uo pipefail
 
@@ -45,7 +45,7 @@ jobs:
               sudo -u builder bash -c "cd $GITHUB_WORKSPACE && ./sync-repo.sh -u"
             '
         env:
-          S3_ENDPOINT: ${{ secrets.S3_ENDPOINT }}
-          BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
+          S3_ENDPOINT: ${{ vars.S3_ENDPOINT }}
+          BUCKET_NAME: ${{ vars.BUCKET_NAME }}
           ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
           ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
