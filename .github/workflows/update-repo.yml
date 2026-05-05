@@ -19,13 +19,26 @@ jobs:
           pacman-key --init
           pacman-key --populate archlinux
 
-      - name: Install Netbird and connect to VPN
+      - name: Install build dependencies
+        run: |
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm --needed base-devel rclone git sudo pacman-contrib
+
+      - name: Create build user and install aurutils
+        run: |
+          useradd -m -G wheel builder
+          echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+          su - builder -c "git clone https://aur.archlinux.org/aurutils.git /tmp/aurutils && cd /tmp/aurutils && makepkg -sci --noconfirm"
+
+      - name: Install Netbird from AUR
+        run: |
+          su - builder -c "git clone https://aur.archlinux.org/netbird-bin.git /tmp/netbird && cd /tmp/netbird && makepkg -si --noconfirm"
+
+      - name: Connect to VPN
         env:
           SETUP_KEY: ${{ secrets.NETBIRD_SETUP_KEY }}
         run: |
-          curl -fsSL https://pkgs.netbird.io/install.sh | sh
-          sudo netbird service install
-          sudo netbird service start
+          systemctl enable --now netbird
           netbird up --setup-key="${SETUP_KEY}" --hostname="irao-arch-update-job" --management-url="https://vpn.joaocosta.dev"
           while [ -z "$(netbird status | grep 'Management: Connected')" ]; do
             echo "Waiting for Netbird to connect..."
@@ -43,17 +56,6 @@ jobs:
             exit 1
           fi
           echo "DNS OK: $S3_HOST resolves"
-
-      - name: Install build dependencies
-        run: |
-          pacman -Syu --noconfirm
-          pacman -S --noconfirm --needed base-devel rclone git sudo pacman-contrib
-
-      - name: Create build user and install aurutils
-        run: |
-          useradd -m -G wheel builder
-          echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-          su - builder -c "git clone https://aur.archlinux.org/aurutils.git /tmp/aurutils && cd /tmp/aurutils && makepkg -sci --noconfirm"
 
       - name: Configure pacman repo
         env:
