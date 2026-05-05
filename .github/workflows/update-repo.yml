@@ -22,11 +22,19 @@ jobs:
       - name: Build and upload packages
         run: |
           docker run --network host \
+            -v /etc/resolv.conf:/etc/resolv.conf:ro \
             -v "$GITHUB_WORKSPACE:$GITHUB_WORKSPACE" \
             -w "$GITHUB_WORKSPACE" \
             -e GITHUB_WORKSPACE -e S3_ENDPOINT -e BUCKET_NAME -e ACCESS_KEY_ID -e ACCESS_KEY_SECRET \
             archlinux:latest bash -c '
               set -uo pipefail
+
+              S3_HOST=$(echo "$S3_ENDPOINT" | sed -E "s|^https?://([^:/]+).*|\1|")
+              if ! getent hosts "$S3_HOST" > /dev/null 2>&1; then
+                echo "ERROR: Cannot resolve \"$S3_HOST\" — VPN DNS likely not active. Bailing out."
+                exit 1
+              fi
+              echo "DNS OK: $S3_HOST resolves"
 
               pacman -Syu --noconfirm
               pacman -S --noconfirm --needed base-devel rclone git sudo pacman-contrib
