@@ -1,6 +1,6 @@
 # Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
 pkgname=irao-amd-gpu
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="AMD GPU drivers"
 arch=('any')
@@ -8,4 +8,5 @@ url="https://github.com/JoaoCostaIFG/dotfiles"
 license=('MIT')
 depends=(
   'vulkan-radeon'
+  'lib32-vulkan-radeon'
 )

@@ -69,6 +69,7 @@ if [[ ${#LOCAL_PKGS[@]} -gt 0 ]]; then
     (cd "$pkg_dir" && makepkg -cdf --noconfirm)
     cp "$pkg_dir"/*.pkg.tar.* "$LOCAL_PATH/"
     repo-add "$LOCAL_PATH/$REPO_NAME.db.tar.xz" "$pkg_dir"/*.pkg.tar.*
+    rm -f "$pkg_dir"/*.pkg.tar.*
   done
 fi
 

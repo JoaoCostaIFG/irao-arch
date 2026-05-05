@@ -1,6 +1,6 @@
 # irao-arch
 
-A personal Arch Linux package repository hosted on S3-compatible storage. Packages are built from the AUR via `aurutils`, and custom meta-packages are built from local PKGBUILDs. Everything is synced to S3 using `rclone`.
+A personal Arch Linux package repository hosted on S3 storage. Packages are built from the AUR via `aurutils`, and custom meta-packages are built from local PKGBUILDs. Everything is synced to S3 using `rclone`.
 
 Inspiration/guide by [disconnected.systems](https://disconnected.systems/blog/archlinux-repo-in-aws-bucket/).
 
@@ -31,13 +31,13 @@ Server = <S3_ENDPOINT>/<BUCKET_NAME>/x86_64/
 
 Local meta-packages live in `packages/<name>/PKGBUILD` and are built with `makepkg`. AUR packages are built and tracked via `aur sync`. Both end up in the same repo and are pushed to S3.
 
-### List packages
+### List packages in the repo
 
 ```bash
 ./list-repo.sh
 ```
 
-### Remove packages
+### Remove packages from the repo
 
 ```bash
 ./del-from-repo.sh <pkgname> [pkgname ...]
@@ -61,7 +61,9 @@ This marks all dependencies of any installed meta-package as dependency-installe
 
 ## Adding a new meta-package
 
-Create `packages/<name>/PKGBUILD` with `depends=(...)` listing the packages you want. Bump `pkgver` or `pkgrel` whenever you change the dependency list — pacman won't see an update otherwise.
+Create `packages/<name>/PKGBUILD` with `depends=(...)` listing the packages you want.
+
+**Note:** bump `pkgver` or `pkgrel` whenever you change the dependency list for pacman to see the update.
 
 ## How it works
 
