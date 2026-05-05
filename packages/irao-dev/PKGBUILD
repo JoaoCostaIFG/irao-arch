@@ -1,6 +1,6 @@
 # Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
 pkgname=irao-dev
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Development tools, languages, and editors"
 arch=('any')
@@ -63,4 +63,5 @@ depends=(
   'yarn'
   'snip-llm-proxy-git'
   'electron'
+  'uv'
 )
