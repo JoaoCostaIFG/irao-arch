@@ -1,0 +1,48 @@
+name: Update repository
+
+on:
+  schedule:
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm --needed base-devel rclone git sudo pacman-contrib
+
+      - name: Create build user
+        run: |
+          useradd -m -G wheel builder
+          echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+      - name: Install aurutils
+        run: |
+          su - builder -c "git clone https://aur.archlinux.org/aurutils.git /tmp/aurutils && cd /tmp/aurutils && makepkg -sci --noconfirm"
+
+      - name: Configure pacman repo
+        run: |
+          printf '\n[irao-arch]\nSigLevel = Optional TrustAll\nServer = %s/%s/x86_64/\n' "$S3_ENDPOINT" "$BUCKET_NAME" >> /etc/pacman.conf
+          pacman -Sy --noconfirm
+        env:
+          S3_ENDPOINT: ${{ secrets.S3_ENDPOINT }}
+          BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
+
+      - name: Build and upload packages
+        run: |
+          printf 'S3_ENDPOINT=%s\nBUCKET_NAME=%s\nACCESS_KEY_ID=%s\nACCESS_KEY_SECRET=%s\n' \
+            "$S3_ENDPOINT" "$BUCKET_NAME" "$ACCESS_KEY_ID" "$ACCESS_KEY_SECRET" > .env
+          chown -R builder:builder .
+          sudo -u builder bash -c "cd $GITHUB_WORKSPACE && ./sync-repo.sh -u"
+        env:
+          S3_ENDPOINT: ${{ secrets.S3_ENDPOINT }}
+          BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
+          ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
+          ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
