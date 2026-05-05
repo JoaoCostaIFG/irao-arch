@@ -1,0 +1,13 @@
+# Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
+pkgname=irao-nvidia-gpu
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="NVIDIA GPU drivers"
+arch=('any')
+url="https://github.com/JoaoCostaIFG/dotfiles"
+license=('MIT')
+depends=(
+  'lib32-nvidia-utils'
+  'libva-nvidia-driver'
+  'nvidia-dkms'
+)

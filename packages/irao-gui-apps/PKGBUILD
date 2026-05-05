@@ -1,0 +1,38 @@
+# Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
+pkgname=irao-gui-apps
+pkgver=0.0.2
+pkgrel=1
+pkgdesc="GUI applications: browsers, office, media, and utilities"
+arch=('any')
+url="https://github.com/JoaoCostaIFG/dotfiles"
+license=('MIT')
+depends=(
+  'audacity'
+  'bambustudio-appimage'
+  'bitwarden'
+  'chromium'
+  'cups'
+  'cups-pdf'
+  'element-desktop'
+  'firefox'
+  'freecad'
+  'gimp'
+  'godot'
+  'inkscape'
+  'joplin-bin'
+  'kicad'
+  'libreoffice-fresh'
+  'obs-studio'
+  'qbittorrent'
+  'seahorse'
+  'strawberry'
+  'syncthingtray-qt6'
+  'thunderbird'
+  'vesktop'
+  'vicinae-bin'
+  'zathura'
+  'zathura-cb'
+  'zathura-djvu'
+  'zathura-pdf-mupdf'
+  'zathura-ps'
+)

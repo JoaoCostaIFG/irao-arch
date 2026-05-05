@@ -17,6 +17,7 @@ REMOTE_NAME="irao-arch"
 REPO_NAME="irao-arch"
 LOCAL_PATH="$SCRIPT_DIR/local-repo"
 REMOTE_PATH="$REMOTE_NAME:$BUCKET_NAME/x86_64"
+PACKAGES_DIR="$SCRIPT_DIR/packages"
 
 mkdir -p "$LOCAL_PATH"
 
@@ -32,8 +33,50 @@ ln -sf "$REPO_NAME.files.tar.xz" "$LOCAL_PATH/$REPO_NAME.files"
 echo "==> Cleaning local package cache..."
 rm -f "$LOCAL_PATH/"*.pkg.tar.xz "$LOCAL_PATH/"*.pkg.tar.zst
 
-echo "==> Running aursync..."
-aur sync --noview --repo "$REPO_NAME" --root "$LOCAL_PATH" "$@"
+# --- Build local meta-packages from packages/ ---
+LOCAL_PKGS=()
+AUR_ARGS=()
+BUILD_ALL_LOCAL=false
+
+for arg in "$@"; do
+  if [[ "$arg" == "-u" ]]; then
+    BUILD_ALL_LOCAL=true
+    AUR_ARGS+=("$arg")
+  elif [[ -d "$PACKAGES_DIR/$arg" ]]; then
+    LOCAL_PKGS+=("$arg")
+  else
+    AUR_ARGS+=("$arg")
+  fi
+done
+
+# If no args passed, build all local packages and sync all tracked AUR packages
+if [[ $# -eq 0 ]]; then
+  BUILD_ALL_LOCAL=true
+fi
+
+if $BUILD_ALL_LOCAL && [[ -d "$PACKAGES_DIR" ]]; then
+  for dir in "$PACKAGES_DIR"/*/; do
+    [[ -d "$dir" ]] || continue
+    LOCAL_PKGS+=("$(basename "$dir")")
+  done
+fi
+
+if [[ ${#LOCAL_PKGS[@]} -gt 0 ]]; then
+  echo "==> Building local packages: ${LOCAL_PKGS[*]}"
+  for pkg in "${LOCAL_PKGS[@]}"; do
+    pkg_dir="$PACKAGES_DIR/$pkg"
+    echo "  -> Building $pkg..."
+    (cd "$pkg_dir" && makepkg -cdf --noconfirm)
+    cp "$pkg_dir"/*.pkg.tar.* "$LOCAL_PATH/"
+    repo-add "$LOCAL_PATH/$REPO_NAME.db.tar.xz" "$pkg_dir"/*.pkg.tar.*
+  done
+fi
+
+# --- Build/sync AUR packages ---
+if [[ ${#AUR_ARGS[@]} -gt 0 ]] || [[ $# -eq 0 ]]; then
+  echo "==> Running aursync..."
+  aur sync --noview --repo "$REPO_NAME" --root "$LOCAL_PATH" "${AUR_ARGS[@]}"
+fi
 
 echo "==> Syncing local changes to remote..."
 rclone copy -L "$LOCAL_PATH/" "$REMOTE_PATH/" \

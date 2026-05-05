@@ -1,0 +1,24 @@
+# Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
+pkgname=irao-gaming
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Gaming: Steam, Wine, Proton, and game launchers"
+arch=('any')
+url="https://github.com/JoaoCostaIFG/dotfiles"
+license=('MIT')
+depends=(
+  'alvr-launcher-bin'
+  'gamemode'
+  'gamescope'
+  'heroic-games-launcher-bin'
+  'prismlauncher'
+  'protontricks'
+  'protonup-qt'
+  'steam'
+  'steamtinkerlaunch'
+  'supertux'
+  'wine-gecko'
+  'wine-mono'
+  'wine-staging'
+  'winetricks'
+)

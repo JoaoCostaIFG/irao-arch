@@ -1,0 +1,56 @@
+# Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
+pkgname=irao-cli
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="CLI tools, shells, and version control"
+arch=('any')
+url="https://github.com/JoaoCostaIFG/dotfiles"
+license=('MIT')
+depends=(
+  'dashbinsh'
+  'atuin'
+  'bash-completion'
+  'bat'
+  'bottom'
+  'chafa'
+  'detox'
+  'direnv'
+  'eza'
+  'fastfetch'
+  'fd'
+  'fzf'
+  'git'
+  'git-absorb'
+  'git-delta'
+  'git-filter-repo'
+  'github-cli'
+  'glow'
+  'gum'
+  'htmlq'
+  'imagemagick'
+  'jq'
+  'jujutsu'
+  'just'
+  'lf'
+  'lshw'
+  'lzop'
+  'mediainfo'
+  'netbird'
+  'numbat'
+  'nvtop'
+  'ouch'
+  'prek'
+  'pv'
+  'rclone'
+  'ripgrep-all'
+  'ripdrag'
+  'rlwrap'
+  'sshfs'
+  'sshpass'
+  'starship'
+  'syncthing'
+  'trash-cli'
+  'yq'
+  'yt-dlp'
+  'zoxide'
+)

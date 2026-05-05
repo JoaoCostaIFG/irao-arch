@@ -1,0 +1,13 @@
+# Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
+pkgname=irao-ifgdt
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Apps specific for irao desktop (ifgdt)"
+arch=('any')
+url="https://github.com/JoaoCostaIFG/dotfiles"
+license=('MIT')
+depends=(
+  'openrgb'
+  'solaar'
+  'xp-pen-tablet'
+)

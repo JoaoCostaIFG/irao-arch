@@ -1,0 +1,26 @@
+# Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
+pkgname=irao-fonts
+pkgver=0.0.2
+pkgrel=1
+pkgdesc="Font packages"
+arch=('any')
+url="https://github.com/JoaoCostaIFG/dotfiles"
+license=('MIT')
+depends=(
+  'gnu-free-fonts'
+  'inter-font'
+  'noto-fonts'
+  'noto-fonts-cjk'
+  'noto-fonts-emoji'
+  'noto-fonts-extra'
+  'otf-monaspace-nerdfonts'
+  'ttf-dejavu'
+  'ttf-inconsolata'
+  'ttf-lato'
+  'ttf-liberation'
+  'ttf-linux-libertine'
+  'ttf-ms-fonts'
+  'ttf-roboto'
+  'ttf-sourcecodepro-nerd'
+  'ttf-victor-mono-nerd'
+)
