@@ -1,6 +1,6 @@
 # Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
 pkgname=irao-desktop
-pkgver=0.0.3
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Hyprland desktop environment, audio, and themes"
 arch=('any')
@@ -17,6 +17,7 @@ depends=(
   'cava'
   'ddcci-driver-linux-dkms-git'
   'ddcutil'
+  'calf'
   'easyeffects'
   'espeakup'
   'ffmpeg'
@@ -37,6 +38,7 @@ depends=(
   'kitty'
   'libnotify'
   'libva-utils'
+  'libvdpau-va-gl'
   'matugen-git'
   'mesa'
   'mesa-utils'
@@ -51,6 +53,11 @@ depends=(
   'pipewire-alsa'
   'pipewire-pulse'
   'pipewire-v4l2'
+  'gst-plugin-pipewire'
+  'gst-plugin-va'
+  'gst-plugins-bad'
+  'gst-plugins-good'
+  'gst-plugins-ugly'
   'playerctl'
   'satty'
   'simple-mtpfs'
@@ -71,7 +78,8 @@ depends=(
   'xdg-desktop-portal-gtk'
   'xdg-desktop-portal-hyprland'
   'xdg-terminal-exec'
-  'xorg-server'
-
+  'xorg-xwayland'
   'sane-airscan'
+  'libayatana-appindicator'
+  'libdvdcss'
 )

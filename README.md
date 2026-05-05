@@ -2,6 +2,8 @@
 
 A personal Arch Linux package repository hosted on S3-compatible storage. Packages are built from the AUR via `aurutils`, and custom meta-packages are built from local PKGBUILDs. Everything is synced to S3 using `rclone`.
 
+Inspiration/guide by [disconnected.systems](https://disconnected.systems/blog/archlinux-repo-in-aws-bucket/).
+
 ## Setup
 
 1. Copy `.env.example` to `.env` and fill in your S3 credentials (`S3_ENDPOINT`, `BUCKET_NAME`, `ACCESS_KEY_ID`, `ACCESS_KEY_SECRET`).
