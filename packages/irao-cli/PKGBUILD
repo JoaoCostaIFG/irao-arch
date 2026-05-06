@@ -7,12 +7,12 @@ arch=('any')
 url="https://github.com/JoaoCostaIFG/dotfiles"
 license=('MIT')
 depends=(
-  'dashbinsh'
   'atuin'
   'bash-completion'
   'bat'
   'bottom'
   'chafa'
+  'dashbinsh'
   'detox'
   'direnv'
   'eza'
@@ -42,8 +42,8 @@ depends=(
   'prek'
   'pv'
   'rclone'
-  'ripgrep-all'
   'ripdrag'
+  'ripgrep-all'
   'rlwrap'
   'sshfs'
   'sshpass'

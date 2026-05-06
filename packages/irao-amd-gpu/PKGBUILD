@@ -7,6 +7,6 @@ arch=('any')
 url="https://github.com/JoaoCostaIFG/dotfiles"
 license=('MIT')
 depends=(
-  'vulkan-radeon'
   'lib32-vulkan-radeon'
+  'vulkan-radeon'
 )
