@@ -1,6 +1,6 @@
 # Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
 pkgname=irao-cli
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="CLI tools, shells, and version control"
 arch=('any')
@@ -12,10 +12,12 @@ depends=(
   'bat'
   'bottom'
   'chafa'
+  'ctpv-joaocostaifg-git'
   'dashbinsh'
   'detox'
   'direnv'
   'eza'
+  'f3d'
   'fastfetch'
   'fd'
   'fzf'
@@ -54,6 +56,4 @@ depends=(
   'yt-dlp'
   'yt-dlp-ejs'
   'zoxide'
-  'ctpv-joaocostaifg-git'
-  'f3m'
 )
