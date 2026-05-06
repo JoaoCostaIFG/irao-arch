@@ -22,6 +22,7 @@ REMOTE_NAME="irao-arch"
 REPO_NAME="irao-arch"
 LOCAL_PATH="$SCRIPT_DIR/local-repo"
 REMOTE_PATH="$REMOTE_NAME:$BUCKET_NAME/x86_64"
+AUR_CONF="$SCRIPT_DIR/aur-packages.conf"
 
 mkdir -p "$LOCAL_PATH"
 
@@ -53,5 +54,12 @@ done
 
 echo "==> Refreshing pacman DB..."
 sudo pacsync "$REPO_NAME"
+
+for package in "$@"; do
+  if [[ -f "$AUR_CONF" ]] && grep -qx "$package" "$AUR_CONF"; then
+    sed -i "/^${package}$/d" "$AUR_CONF"
+    echo "  -> Removed $package from $AUR_CONF"
+  fi
+done
 
 echo "Done."

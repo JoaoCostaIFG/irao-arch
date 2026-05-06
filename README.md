@@ -1,6 +1,6 @@
 # irao-arch
 
-A personal Arch Linux package repository hosted on S3 storage. Packages are built from the AUR via `aurutils`, and custom meta-packages are built from local PKGBUILDs. Everything is synced to S3 using `rclone`.
+A personal Arch Linux package repository hosted on S3 storage. Packages are built from the AUR via `aurutils`, and custom meta-packages are built from local PKGBUILDs. Everything is synced to S3 using `rclone`. AUR packages are tracked in `aur-packages.conf`.
 
 Inspiration/guide by [disconnected.systems](https://disconnected.systems/blog/archlinux-repo-in-aws-bucket/).
 

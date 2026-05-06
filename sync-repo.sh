@@ -18,6 +18,12 @@ REPO_NAME="irao-arch"
 LOCAL_PATH="$SCRIPT_DIR/local-repo"
 REMOTE_PATH="$REMOTE_NAME:$BUCKET_NAME/x86_64"
 PACKAGES_DIR="$SCRIPT_DIR/packages"
+AUR_CONF="$SCRIPT_DIR/aur-packages.conf"
+
+read_aur_packages() {
+  [[ -f "$AUR_CONF" ]] || return 0
+  grep -v '^\s*#' "$AUR_CONF" | grep -v '^\s*$' | sed 's/\s*#.*//' || true
+}
 
 mkdir -p "$LOCAL_PATH"
 
@@ -37,11 +43,14 @@ rm -f "$LOCAL_PATH/"*.pkg.tar.xz "$LOCAL_PATH/"*.pkg.tar.zst
 LOCAL_PKGS=()
 AUR_ARGS=()
 BUILD_ALL_LOCAL=false
+UPDATE_AUR=false
+
+mapfile -t TRACKED_AUR < <(read_aur_packages)
 
 for arg in "$@"; do
   if [[ "$arg" == "-u" ]]; then
     BUILD_ALL_LOCAL=true
-    AUR_ARGS+=("$arg")
+    UPDATE_AUR=true
   elif [[ -d "$PACKAGES_DIR/$arg" ]]; then
     LOCAL_PKGS+=("$arg")
   else
@@ -49,9 +58,9 @@ for arg in "$@"; do
   fi
 done
 
-# If no args passed, build all local packages and sync all tracked AUR packages
 if [[ $# -eq 0 ]]; then
   BUILD_ALL_LOCAL=true
+  UPDATE_AUR=true
 fi
 
 if $BUILD_ALL_LOCAL && [[ -d "$PACKAGES_DIR" ]]; then
@@ -74,9 +83,21 @@ if [[ ${#LOCAL_PKGS[@]} -gt 0 ]]; then
 fi
 
 # --- Build/sync AUR packages ---
-if [[ ${#AUR_ARGS[@]} -gt 0 ]] || [[ $# -eq 0 ]]; then
-  echo "==> Running aursync..."
+if $UPDATE_AUR && [[ ${#TRACKED_AUR[@]} -gt 0 ]]; then
+  echo "==> Syncing tracked AUR packages: ${TRACKED_AUR[*]}"
+  aur sync --noview --repo "$REPO_NAME" --root "$LOCAL_PATH" -u
+fi
+
+if [[ ${#AUR_ARGS[@]} -gt 0 ]]; then
+  echo "==> Syncing AUR packages: ${AUR_ARGS[*]}"
   aur sync --noview --repo "$REPO_NAME" --root "$LOCAL_PATH" "${AUR_ARGS[@]}"
+
+  for pkg in "${AUR_ARGS[@]}"; do
+    if ! printf '%s\n' "${TRACKED_AUR[@]}" | grep -qx "$pkg"; then
+      echo "$pkg" >> "$AUR_CONF"
+      echo "  -> Added $pkg to $AUR_CONF"
+    fi
+  done
 fi
 
 echo "==> Syncing local changes to remote..."
