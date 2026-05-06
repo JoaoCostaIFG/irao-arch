@@ -1,6 +1,6 @@
 # Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
 pkgname=irao-cli
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="CLI tools, shells, and version control"
 arch=('any')
@@ -54,4 +54,6 @@ depends=(
   'yt-dlp'
   'yt-dlp-ejs'
   'zoxide'
+  'ctpv-joaocostaifg-git'
+  'f3m'
 )

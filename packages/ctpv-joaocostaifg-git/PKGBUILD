@@ -1,0 +1,69 @@
+# Maintainer: Joao Costa <arch@joaocosta.dev>
+_name=ctpv
+pkgname="${_name}-joaocostaifg-git"
+pkgver=r293.d78f367
+pkgrel=1
+pkgdesc="Fast image previews for lf"
+arch=('i686' 'x86_64')
+url="https://github.com/JoaoCostaIFG/ctpv"
+license=('MIT')
+provides=("$_name")
+conflicts=('ctpv' 'ctpv-fish')
+depends=('file' 'openssl')
+makedepends=('git')
+optdepends=(
+  'atool: for archive files'
+  'bat: for text files'
+  'chafa: for image files'
+  'colordiff: for diff files'
+  'diff-so-fancy: for diff files'
+  'elinks: for html files'
+  'f3d: for 3D model files'
+  'ffmpeg: for audio file metadata'
+  'ffmpegthumbnailer: for audio and video files'
+  'git-delta: for diff files'
+  'glow: for markdown files'
+  'gnupg: for gpg-encrypted files'
+  'highlight: for text files'
+  'imagemagick: for svg, webp and font files'
+  'isoinfo: for iso files'
+  'jq: for json and jupyter notebook files'
+  'jupyter-notebook: for jupyter notebook files'
+  'libreoffice-fresh: for office files'
+  'lynx: for html files'
+  'mdcat: for markdown files'
+  'ouch: for archive files'
+  'pandoc: for epub files'
+  'perl-image-exiftool: for any file metadata'
+  'poppler: for pdf files'
+  'source-highlight: for text files'
+  'sqlite: for sqlite database files'
+  'transmission-cli: for torrent files'
+  'unzip: for epub files (fallback if pandoc unavailable)'
+  'w3m: for html files'
+)
+source=("git+$url?signed")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/${_name}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$srcdir/${_name}"
+  make LDFLAGS=-L/usr/lib
+}
+
+package() {
+  local license_prefix="$pkgdir/usr/share/licenses/$pkgname"
+  mkdir -p "$license_prefix"
+  cp "$srcdir/$_name/LICENSE" "$license_prefix"
+
+  local doc_prefix="$pkgdir/usr/share/doc/$pkgname"
+  mkdir -p "$doc_prefix"
+  cp "$srcdir/$_name/README.md" "$doc_prefix"
+
+  cd "$srcdir/${_name}"
+  make PREFIX="/usr" DESTDIR="$pkgdir" install
+}
