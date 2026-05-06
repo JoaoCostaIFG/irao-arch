@@ -38,7 +38,8 @@ jobs:
         env:
           SETUP_KEY: ${{ secrets.NETBIRD_SETUP_KEY }}
         run: |
-          systemctl enable --now netbird
+          netbird service run &
+          sleep 2
           netbird up --setup-key="${SETUP_KEY}" --hostname="irao-arch-update-job" --management-url="https://vpn.joaocosta.dev"
           while [ -z "$(netbird status | grep 'Management: Connected')" ]; do
             echo "Waiting for Netbird to connect..."
