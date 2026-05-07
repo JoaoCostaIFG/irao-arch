@@ -42,7 +42,7 @@ optdepends=(
   'unzip: for epub files (fallback if pandoc unavailable)'
   'w3m: for html files'
 )
-source=("git+$url?signed")
+source=("git+$url")
 sha512sums=('SKIP')
 
 pkgver() {
