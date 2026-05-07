@@ -66,6 +66,10 @@ jobs:
           printf '\n[irao-arch]\nSigLevel = Optional TrustAll\nServer = %s/%s/x86_64/\n' "$S3_ENDPOINT" "$BUCKET_NAME" >> /etc/pacman.conf
           pacman -Sy --noconfirm
 
+      - name: Import GPG keys for package verification
+        run: |
+          curl -sL "https://github.com/JoaoCostaIFG.gpg" | sudo -u builder gpg --import
+
       - name: Setup env and run sync
         env:
           S3_ENDPOINT: ${{ vars.S3_ENDPOINT }}
