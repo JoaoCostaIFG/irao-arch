@@ -1,4 +1,16 @@
 #!/bin/bash
+### Sync packages to the irao-arch repo
+### Builds local meta-packages and AUR packages, then pushes to S3
+###
+### Usage: sync-repo.sh [-u] [package ...]
+###   -u              Update all packages (local + AUR)
+###   package         Build a local meta-package or add/track an AUR package
+###
+### Examples:
+###   sync-repo.sh              # build all local + AUR packages
+###   sync-repo.sh irao-base    # build a single local meta-package
+###   sync-repo.sh some-pkg     # add/track an AUR package
+###   sync-repo.sh -u           # update all packages
 set -uo pipefail
 trap 's=$?; echo "$0: Error on line $LINENO: $BASH_COMMAND"; exit $s' ERR
 

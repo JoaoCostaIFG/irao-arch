@@ -1,4 +1,11 @@
 #!/bin/bash
+### Mark dependencies of installed meta-packages as dependency-installed
+### so they show up as orphans if the meta-package is later removed
+###
+### Usage: mark-asdeps.sh
+###
+### Examples:
+###   mark-asdeps.sh
 set -uo pipefail
 trap 's=$?; echo "$0: Error on line $LINENO: $BASH_COMMAND"; exit $s' ERR
 

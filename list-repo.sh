@@ -1,4 +1,10 @@
 #!/bin/bash
+### List all packages in the irao-arch repo
+###
+### Usage: list-repo.sh
+###
+### Examples:
+###   list-repo.sh
 set -uo pipefail
 trap 's=$?; echo "$0: Error on line $LINENO: $BASH_COMMAND"; exit $s' ERR
 

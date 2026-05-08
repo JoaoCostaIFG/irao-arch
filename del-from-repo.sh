@@ -1,4 +1,11 @@
 #!/bin/bash
+### Remove packages from the irao-arch repo
+###
+### Usage: del-from-repo.sh <package> [package ...]
+###
+### Examples:
+###   del-from-repo.sh some-pkg
+###   del-from-repo.sh pkg1 pkg2 pkg3
 set -uo pipefail
 trap 's=$?; echo "$0: Error on line $LINENO: $BASH_COMMAND"; exit $s' ERR
 

@@ -1,4 +1,12 @@
 #!/bin/bash
+### Create or recreate the irao-arch rclone remote
+###
+### Usage: setup-remote.sh [--recreate]
+###   --recreate    Delete and recreate the existing remote
+###
+### Examples:
+###   setup-remote.sh            # create remote if it doesn't exist
+###   setup-remote.sh --recreate # force recreate the remote
 set -uo pipefail
 trap 's=$?; echo "$0: Error on line $LINENO: $BASH_COMMAND"; exit $s' ERR
 

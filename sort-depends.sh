@@ -1,4 +1,10 @@
 #!/bin/bash
+### Sort depends arrays in PKGBUILDs alphabetically
+###
+### Usage: sort-depends.sh
+###
+### Examples:
+###   sort-depends.sh
 set -euo pipefail
 
 sort_depends_in_file() {

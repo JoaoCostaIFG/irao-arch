@@ -1,4 +1,10 @@
 #!/bin/bash
+### Scan PKGBUILDs for AUR dependencies and add them to aur-packages.conf
+###
+### Usage: update-aur-deps.sh
+###
+### Examples:
+###   update-aur-deps.sh
 set -uo pipefail
 trap 's=$?; echo "$0: Error on line $LINENO: $BASH_COMMAND"; exit $s' ERR
 
