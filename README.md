@@ -43,6 +43,16 @@ Local meta-packages live in `packages/<name>/PKGBUILD` and are built with `makep
 ./del-from-repo.sh <pkgname> [pkgname ...]
 ```
 
+### Update AUR dependency list
+
+```bash
+./update-aur-deps.sh
+```
+
+Scans all `packages/*/PKGBUILD` dependency lists, identifies which ones are AUR packages (not in official repos and not a local meta-package), and adds any missing ones to `aur-packages.conf`.
+
+**Note:** this is not called automatically by `sync-repo.sh`. I prefer to only add AUR packages that are needed to bootstrap my systems. In this case this is aurutils and paru (or yay). I do this to prevent problems related to building -git packages in other systems.
+
 ### Mark meta-package dependencies
 
 After installing meta-packages on a system, dependencies may still be marked as explicitly installed. To fix this:
