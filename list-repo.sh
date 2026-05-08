@@ -5,9 +5,9 @@ trap 's=$?; echo "$0: Error on line $LINENO: $BASH_COMMAND"; exit $s' ERR
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ENV_FILE="$SCRIPT_DIR/.env"
 
-if [[ ! -f "$ENV_FILE" ]]; then
-  echo "Error: $ENV_FILE not found"
-  exit 1
+if [[ ! -f $ENV_FILE ]]; then
+    echo "Error: $ENV_FILE not found"
+    exit 1
 fi
 source "$ENV_FILE"
 
@@ -23,11 +23,11 @@ mkdir -p "$LOCAL_PATH"
 
 echo "==> Syncing remote DB to local..."
 rclone copy "$REMOTE_PATH/" "$LOCAL_PATH/" \
-  --include "$REPO_NAME.db.tar.xz" \
-  --include "$REPO_NAME.files.tar.xz" \
-  --no-check-dest
+    --include "$REPO_NAME.db.tar.xz" \
+    --include "$REPO_NAME.files.tar.xz" \
+    --no-check-dest
 
 echo "==> Packages in $REPO_NAME:"
 tar -tf "$DB_FILE" 2>/dev/null | awk -F/ '{print $1}' | sort -u | while read -r pkg; do
-  echo "  $pkg"
+    echo "  $pkg"
 done

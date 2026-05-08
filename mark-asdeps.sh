@@ -6,14 +6,14 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PACKAGES_DIR="$SCRIPT_DIR/packages"
 
 for pkgbuild in "$PACKAGES_DIR"/*/PKGBUILD; do
-  pkg_name=$(basename "$(dirname "$pkgbuild")")
-  if pacman -Qi "$pkg_name" &>/dev/null; then
-    echo "==> Marking dependencies of $pkg_name as deps..."
-    deps=$(awk '/^depends=\(/,/\)/' "$pkgbuild" | grep "'" | sed "s/.*'\(.*\)'.*/\1/")
-    if [[ -n "$deps" ]]; then
-      sudo pacman -D --asdeps $deps
+    pkg_name=$(basename "$(dirname "$pkgbuild")")
+    if pacman -Qi "$pkg_name" &>/dev/null; then
+        echo "==> Marking dependencies of $pkg_name as deps..."
+        deps=$(awk '/^depends=\(/,/\)/' "$pkgbuild" | grep "'" | sed "s/.*'\(.*\)'.*/\1/")
+        if [[ -n $deps ]]; then
+            sudo pacman -D --asdeps $deps
+        fi
+    else
+        echo "==> Skipping $pkg_name (not installed)"
     fi
-  else
-    echo "==> Skipping $pkg_name (not installed)"
-  fi
 done

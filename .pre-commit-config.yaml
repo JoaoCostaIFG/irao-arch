@@ -1,8 +1,14 @@
 repos:
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: v3.11.0-1
+    hooks:
+      - id: shfmt
+        args: [-w, -s, -i, "4", -ci]
+        files: ^[^/]+\.sh$
   - repo: local
     hooks:
       - id: sort-depends
         name: Sort depends array in PKGBUILDs
-        entry: scripts/sort-depends.sh
+        entry: sort-depends.sh
         language: script
         files: ^packages/.*/PKGBUILD$
