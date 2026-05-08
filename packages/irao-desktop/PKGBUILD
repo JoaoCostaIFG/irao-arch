@@ -1,6 +1,6 @@
 # Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
 pkgname=irao-desktop
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="Hyprland desktop environment, audio, and themes"
 arch=('any')
@@ -42,6 +42,7 @@ depends=(
   'imv'
   'kitty'
   'libayatana-appindicator'
+  'libdeep_filter_ladspa-git'
   'libdvdcss'
   'libnotify'
   'libva-utils'

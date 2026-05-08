@@ -1,6 +1,6 @@
 # Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
 pkgname=irao-gaming
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Gaming: Steam, Wine, Proton, and game launchers"
 arch=('any')
@@ -13,6 +13,7 @@ depends=(
   'heroic-games-launcher-bin'
   'lib32-fakeroot'
   'lib32-gamemode'
+  'lib32-gst-plugins-base-libs'
   'lib32-giflib'
   'lib32-gnutls'
   'lib32-gtk3'
@@ -35,6 +36,7 @@ depends=(
   'lib32-pipewire-v4l2'
   'lib32-v4l-utils'
   'lib32-vulkan-icd-loader'
+  'lsfg-vk-git'
   'prismlauncher'
   'protontricks'
   'protonup-qt'
