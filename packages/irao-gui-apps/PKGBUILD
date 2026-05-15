@@ -1,6 +1,6 @@
 # Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
 pkgname=irao-gui-apps
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="GUI applications: browsers, office, media, and utilities"
 arch=('any')
@@ -27,7 +27,7 @@ depends=(
   'seahorse'
   'strawberry'
   'syncthingtray-qt6'
-  'tasks-org-appimage'
+  'tasks-org'
   'thunderbird'
   'vesktop'
   'vicinae-bin'
