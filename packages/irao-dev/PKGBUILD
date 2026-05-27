@@ -51,7 +51,6 @@ depends=(
   'python-tqdm'
   'python-websockets'
   'rustup'
-  'snip-llm-proxy-git'
   'texlive-binextra'
   'texlive-fontsextra'
   'texlive-fontsrecommended'
