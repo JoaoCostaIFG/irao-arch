@@ -1,6 +1,6 @@
 # Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
 pkgname=irao-desktop
-pkgver=0.0.7
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Hyprland desktop environment, audio, and themes"
 arch=('any')
@@ -9,7 +9,6 @@ license=('MIT')
 depends=(
   'adw-gtk-theme'
   'alsa-utils'
-  'app2unit-git'
   'archlinux-xdg-menu'
   'bemenu'
   'blueman'
@@ -48,7 +47,7 @@ depends=(
   'libva-utils'
   'libvdpau-va-gl'
   'lsp-plugins'
-  'matugen-git'
+  'matugen'
   'mesa'
   'mesa-utils'
   'mpv'
