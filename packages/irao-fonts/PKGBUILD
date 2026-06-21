@@ -1,6 +1,6 @@
 # Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
 pkgname=irao-fonts
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Font packages"
 arch=('any')
@@ -13,6 +13,7 @@ depends=(
   'noto-fonts-cjk'
   'noto-fonts-emoji'
   'noto-fonts-extra'
+  'otf-libertinus'
   'otf-monaspace-nerdfonts'
   'ttf-dejavu'
   'ttf-inconsolata'
