@@ -1,6 +1,6 @@
 # Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
 pkgname=irao-desktop
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc="Hyprland desktop environment, audio, and themes"
 arch=('any')
@@ -70,6 +70,7 @@ depends=(
   'tesseract-data-eng'
   'tesseract-data-por'
   'thunar'
+  'typst'
   'udiskie'
   'uwsm'
   'vulkan-tools'
