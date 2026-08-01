@@ -1,6 +1,6 @@
 # Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
 pkgname=irao-desktop
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc="Hyprland desktop environment, audio, and themes"
 arch=('any')
@@ -50,6 +50,7 @@ depends=(
   'matugen'
   'mesa'
   'mesa-utils'
+  'moonshine'
   'mpv'
   'mpv-mpris'
   'nm-connection-editor'
