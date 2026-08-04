@@ -1,7 +1,7 @@
 # Maintainer: Joao Costa <arch@joaocosta.dev>
 _name=ctpv
 pkgname="${_name}-joaocostaifg-git"
-pkgver=r293.d78f367
+pkgver=r294.01770de
 pkgrel=1
 pkgdesc="Fast image previews for lf"
 arch=('i686' 'x86_64')

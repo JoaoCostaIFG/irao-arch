@@ -1,6 +1,6 @@
 pkgbase = ctpv-joaocostaifg-git
 	pkgdesc = Fast image previews for lf
-	pkgver = r287.185b656
+	pkgver = r294.01770de
 	pkgrel = 1
 	url = https://github.com/JoaoCostaIFG/ctpv
 	arch = i686
