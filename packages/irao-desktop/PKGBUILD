@@ -1,6 +1,6 @@
 # Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
 pkgname=irao-desktop
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 pkgdesc="Hyprland desktop environment, audio, and themes"
 arch=('any')
@@ -54,7 +54,7 @@ depends=(
   'mpv'
   'mpv-mpris'
   'nm-connection-editor'
-  'noctalia-shell'
+  'noctalia'
   'nwg-displays'
   'nwg-look'
   'papirus-icon-theme'
