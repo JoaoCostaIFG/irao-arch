@@ -1,6 +1,6 @@
 # Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
 pkgname=irao-desktop
-pkgver=0.0.14
+pkgver=0.0.15
 pkgrel=1
 pkgdesc="Hyprland desktop environment, audio, and themes"
 arch=('any')
@@ -11,7 +11,6 @@ depends=(
   'alsa-utils'
   'archlinux-xdg-menu'
   'bemenu'
-  'blueman'
   'brightnessctl'
   'calf'
   'cava'
