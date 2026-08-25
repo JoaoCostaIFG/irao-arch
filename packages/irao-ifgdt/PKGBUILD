@@ -1,6 +1,6 @@
 # Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
 pkgname=irao-ifgdt
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Apps specific for irao desktop (ifgdt)"
 arch=('any')
@@ -10,4 +10,5 @@ depends=(
   'openrgb'
   'solaar'
   'xp-pen-tablet'
+  'stream32-appimage'
 )
