@@ -1,6 +1,6 @@
 # Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
 pkgname=irao-desktop
-pkgver=0.0.15
+pkgver=0.0.16
 pkgrel=1
 pkgdesc="Hyprland desktop environment, audio, and themes"
 arch=('any')
@@ -11,6 +11,8 @@ depends=(
   'alsa-utils'
   'archlinux-xdg-menu'
   'bemenu'
+  'breeze'
+  'breeze5'
   'brightnessctl'
   'calf'
   'cava'
@@ -36,7 +38,6 @@ depends=(
   'hyprpicker'
   'hyprpolkitagent'
   'hyprpwcenter'
-  'hyprqt6engine'
   'imv'
   'kitty'
   'libayatana-appindicator'
@@ -62,6 +63,7 @@ depends=(
   'pipewire-pulse'
   'pipewire-v4l2'
   'playerctl'
+  'qtengine'
   'sane-airscan'
   'satty'
   'simple-mtpfs'
