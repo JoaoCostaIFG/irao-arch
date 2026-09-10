@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Hyprland desktop environment, audio, and themes"
 arch=('any')
 url="https://github.com/JoaoCostaIFG/dotfiles"
-license=('MIT')
+license=('EUPL-1.2')
 depends=(
   'adw-gtk-theme'
   'alsa-utils'

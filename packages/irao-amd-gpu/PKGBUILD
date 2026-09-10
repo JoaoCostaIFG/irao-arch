@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="AMD GPU drivers"
 arch=('any')
 url="https://github.com/JoaoCostaIFG/dotfiles"
-license=('MIT')
+license=('EUPL-1.2')
 depends=(
   'lib32-vulkan-radeon'
   'vulkan-radeon'

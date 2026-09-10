@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="GUI applications: browsers, office, media, and utilities"
 arch=('any')
 url="https://github.com/JoaoCostaIFG/dotfiles"
-license=('MIT')
+license=('EUPL-1.2')
 depends=(
   'audacity'
   'bambustudio-appimage'

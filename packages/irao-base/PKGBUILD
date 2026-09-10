@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Base system configuration for JoaoCostaIFG systems"
 arch=('any')
 url="https://github.com/JoaoCostaIFG/dotfiles"
-license=('MIT')
+license=('EUPL-1.2')
 depends=(
   '7zip'
   'acpi'

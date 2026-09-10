@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Gaming: Steam, Wine, Proton, and game launchers"
 arch=('any')
 url="https://github.com/JoaoCostaIFG/dotfiles"
-license=('MIT')
+license=('EUPL-1.2')
 depends=(
   'alvr-launcher-bin'
   'gamemode'

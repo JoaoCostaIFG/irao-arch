@@ -84,3 +84,10 @@ Create `packages/<name>/PKGBUILD` with `depends=(...)` listing the packages you 
 5. The local pacman DB is refreshed with `pacsync`.
 
 CI (`.github/workflows/update-repo.yml`) runs daily at 04:00 UTC inside an `archlinux:latest` container and calls `./sync-repo.sh -u` to keep packages up to date.
+
+## License
+
+Repository scripts, configuration, and the `irao-*` meta-packages are
+licensed under the European Union Public Licence v. 1.2 (EUPL-1.2).
+`ctpv-joaocostaifg-git` packages MIT-licensed software; its `license=`
+field describes that software.

@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Apps specific for irao desktop (ifgdt)"
 arch=('any')
 url="https://github.com/JoaoCostaIFG/dotfiles"
-license=('MIT')
+license=('EUPL-1.2')
 depends=(
   'openrgb'
   'solaar'

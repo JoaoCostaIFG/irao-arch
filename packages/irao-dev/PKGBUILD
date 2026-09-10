@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Development tools, languages, and editors"
 arch=('any')
 url="https://github.com/JoaoCostaIFG/dotfiles"
-license=('MIT')
+license=('EUPL-1.2')
 depends=(
   'age'
   'ansible'
