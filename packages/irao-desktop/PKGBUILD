@@ -1,6 +1,6 @@
 # Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
 pkgname=irao-desktop
-pkgver=0.0.16
+pkgver=0.0.17
 pkgrel=1
 pkgdesc="Hyprland desktop environment, audio, and themes"
 arch=('any')
@@ -36,6 +36,7 @@ depends=(
   'hypridle'
   'hyprland'
   'hyprpicker'
+  'hyprpm'
   'hyprpolkitagent'
   'hyprpwcenter'
   'imv'
