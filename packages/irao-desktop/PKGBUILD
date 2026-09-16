@@ -1,6 +1,6 @@
 # Maintainer: JoaoCostaIFG <arch@joaocosta.dev>
 pkgname=irao-desktop
-pkgver=0.0.18
+pkgver=0.0.20
 pkgrel=1
 pkgdesc="Hyprland desktop environment, audio, and themes"
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   'brightnessctl'
   'calf'
   'cava'
-  'ddcci-driver-linux-joaocostaifg-dkms-git'
+  'ddcci-driver-linux-dkms-git'
   'ddcutil'
   'easyeffects'
   'espeakup'
