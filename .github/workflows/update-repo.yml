@@ -7,7 +7,7 @@ jobs:
   update:
     runs-on: ubuntu-latest
     container:
-      image: archlinux:latest
+      image: archlinux:latest@sha256:63c7b061c0c001cb7ce4f8d11b63d351c23e7f97121bc5c8bd5d9f431e615d7d
       options: --cap-add=NET_ADMIN --device=/dev/net/tun
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
